@@ -30,6 +30,8 @@ WEB
       "labelcache_map_edge_buffer" "-10"
       "wms_title" "osm france"
    END
+   IMAGEPATH "/mnt/data/tiles/mapserver/"
+   IMAGEURL "/tiles/"
 END
 
 DEBUG _debug
