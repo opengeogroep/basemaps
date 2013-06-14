@@ -981,6 +981,13 @@ vars= {
 
 styles = {
    'default': {},
+   'nobuildings': {
+      'display_buildings': {
+         0: 0,
+         15:1,
+         17:0
+      }
+   },
    'outlined':{
       'display_motorway_outline': {
          0:0,
@@ -1287,6 +1294,10 @@ style_aliases = {
    # map with no road casing and few colors, suited for using as a basemap when overlaying
    # other layers without risk of confusion between layers.
    "default":"default",
+
+   # Openbasiskaart: stijl zonder buildings vanaf Geonovum tile level 11 (level 17 in deze
+   # mapfile), zodat BAG gebouwen kunnen worden gebruikt
+   "nobuildings":"nobuildings",
 
    # a style resembling the google-maps theme
    "google":"default,outlined,google",
