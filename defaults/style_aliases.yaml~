@@ -1,0 +1,22 @@
+# map with no road casing and few colors, suited for using as a basemap when overlaying
+# other layers without risk of confusion between layers.
+default: default
+
+# Openbasiskaart: stijl zonder buildings vanaf Geonovum tile level 11 (level 17 in deze
+# mapfile), zodat BAG gebouwen kunnen worden gebruikt
+nobuildings: nobuildings
+
+# a style resembling the google-maps theme
+google: "default,outlined,google"
+
+# brt styling for top10 (Netherlands) originated from the SLD's and QGIS implementation of Jan Willem van Aalst
+brt: brt
+
+# geluidsnet styling
+geluidsnet: "geluidsnet"
+   
+# same style as above, but using data coming from an osm2pgsql schema rather than imposm
+googleosm2pgsql: "default,outlined,google,osm2pgsql"
+bing: "default,outlined,bing"
+michelin:"default,outlined,centerlined,michelin"
+
