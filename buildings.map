@@ -18,12 +18,14 @@ LAYER
     CLASS
       STYLE
          COLOR _building_clr
-         OPACITY 50
+         OPACITY _building_opacity
       END
+#if _display_building_outline
       STYLE
          OUTLINECOLOR _building_ol_clr
          WIDTH _building_ol_width
       END
+#endif
 #if _label_buildings == 1
       LABEL
          TYPE TRUETYPE

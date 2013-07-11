@@ -131,9 +131,11 @@ LAYER
     END
  
     CLASS
-        EXPRESSION /park|golf_course/
+        EXPRESSION /park|grass|golf_course/
         STYLE
             COLOR _park_clr
+            OUTLINECOLOR _park_ol_clr
+            OUTLINEWIDTH _park_ol_width
         END
 #if _display_park_lbl==1
         LABEL
@@ -304,7 +306,7 @@ LAYER
           MINDISTANCE 200
           SIZE _waterarea_lbl_size
           COLOR _waterarea_lbl_clr
-       ENCODING "utf-8"
+          ENCODING "utf-8"
           OUTLINECOLOR _waterarea_lbl_ol_clr
           OUTLINEWIDTH _waterarea_lbl_ol_width
           WRAP ' '

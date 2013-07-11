@@ -8,6 +8,8 @@ arialuni fonts/arialuni.ttf
 #scb fonts/TITUSCBZ.TTF
 sc fonts/DejaVuSansCondensed.ttf
 scb fonts/DejaVuSansCondensed-Bold.ttf
+scbo fonts/DejaVuSansCondensed-BoldOblique.ttf
+sco fonts/DejaVuSansCondensed-Oblique.ttf
 khmer fonts/KhmerOS.ttf
 jp fonts/ipag.ttf
 #sc fonts/Cyberbit.ttf

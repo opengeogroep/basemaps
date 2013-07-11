@@ -304,7 +304,47 @@ LAYER
 #endif
 
 
+##################################################
+## cycleway, simple                            ##
+##################################################
 
+#if _display_cycleway == 1
+    CLASS
+#if _display_bridges == 1
+        EXPRESSION 'cycleway00'
+#else
+        EXPRESSION 'cycleway'
+#endif
+#if _display_cycleway_outline
+        STYLE
+           WIDTH _cycleway_width
+           OUTLINEWIDTH _cycleway_ol_width
+           OUTLINECOLOR _cycleway_ol_clr
+        END
+#endif
+        STYLE
+            WIDTH _cycleway_width 
+            COLOR _cycleway_clr
+        END
+#if _label_cycleway == 1
+        LABEL
+            TYPE TRUETYPE
+            PARTIALS FALSE
+            FONT _cycleway_font
+            SIZE _cycleway_lbl_size
+            MINDISTANCE 200
+            REPEATDISTANCE 400
+            ANGLE FOLLOW
+            COLOR _cycleway_lbl_clr
+            OUTLINECOLOR _cycleway_lbl_ol_clr
+            OUTLINEWIDTH _cycleway_lbl_ol_width
+            MINFEATURESIZE AUTO
+            BUFFER 3
+            ENCODING "UTF-8"
+        END
+#endif
+    END
+#endif
 
 ##################################################
 ## pedestrian streets, simple                   ##
@@ -392,7 +432,9 @@ LAYER
             REPEATDISTANCE 400
             MINFEATURESIZE AUTO
             COLOR _motorway_lbl_clr
-            ANGLE FOLLOW
+            ANGLE _motorway_lbl_angle
+            OUTLINECOLOR _motorway_lbl_ol_clr
+            OUTLINEWIDTH _motorway_lbl_ol_width
             BUFFER 3
             ENCODING "UTF-8"
         END
@@ -470,7 +512,9 @@ LAYER
             REPEATDISTANCE 400
             MINFEATURESIZE AUTO
             COLOR _trunk_lbl_clr
-            ANGLE FOLLOW
+            ANGLE _trunk_lbl_angle
+            OUTLINECOLOR _trunk_lbl_ol_clr
+            OUTLINEWIDTH _trunk_lbl_ol_width
             BUFFER 3
             ENCODING "UTF-8"
         END
@@ -614,6 +658,28 @@ LAYER
     END
 #endif
 
+########################
+## cycleway bridges ##
+########################
+#if _display_cycleway == 1
+    CLASS
+        EXPRESSION /cycleway|footway10|path10/
+#if _display_cycleway_outline
+        STYLE
+        END
+#endif
+        STYLE
+            WIDTH _cycleway_width 
+            OUTLINECOLOR _cycleway_bridge_clr
+            OUTLINEWIDTH _cycleway_bridge_width
+            LINECAP BUTT
+        END
+        STYLE
+            WIDTH _cycleway_width 
+            COLOR _cycleway_clr
+        END
+    END
+#endif
 
 ########################
 ## pedestrian bridges ##
@@ -738,6 +804,20 @@ LAYER
         STYLE
             WIDTH _other_width
             COLOR _other_clr
+            OPACITY _tunnel_opacity
+        END
+    END
+#endif
+
+########################
+## cycleway tunnels ##
+########################
+#if _display_cycleway == 1
+    CLASS
+        EXPRESSION /cycleway|footway01|path01/
+        STYLE
+            WIDTH _cycleway_width 
+            COLOR _cycleway_clr
             OPACITY _tunnel_opacity
         END
     END
