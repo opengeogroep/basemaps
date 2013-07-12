@@ -2,24 +2,19 @@ import sys
 from optparse import OptionParser
 import yaml
 
-#Load everything from default
-layer_suffixes = yaml.load(open('defaults/layer_suffixes.yaml','r'))
-maxscales = yaml.load(open('defaults/maxscales.yaml','r'))
-minscales = yaml.load(open('defaults/minscales.yaml','r'))
-default = yaml.load(open('defaults/default.yaml','r'))
-vars= {
+#Load settings
+layer_suffixes = yaml.load(open('default/layer_suffixes.yaml','r'))
+maxscales = yaml.load(open('default/maxscales.yaml','r'))
+minscales = yaml.load(open('default/minscales.yaml','r'))
+default = yaml.load(open('default/default.yaml','r'))
+vars = {
   'layer_suffix':layer_suffixes,
-  'maxscales':maxscales,
-  'minscales':minscales
+  'maxscale':maxscales,
+  'minscale':minscales
 }
-vars.update(default)
-# TODO: Complete it!
 
-#Load the style overide and the styles set
-# TODO: Needs to be invoked
-styles = yaml.load(open('defaults/styles.yaml','r'))
-styles.update({'default':{}})
-style_aliases = yaml.load(open('defaults/style_aliases.yaml','r'))
+#load the default style into the dictionary
+vars.update(default)
 
 parser = OptionParser()
 parser.add_option("-l", "--level", dest="level", type="int", action="store", default=-1,
@@ -31,13 +26,16 @@ parser.add_option("-s", "--style", action="store", dest="style", default="defaul
 
 (options, args) = parser.parse_args()
 
-items = dict(vars.items())
+for namedstyle in options.style.split(','):
+  # skip default style, it is already loaded and 
+  # used to make sure a user doesn't forget to set a variable in the dict
+  if not (namedstyle == 'default'):
+    # load the custom style and override default.
+    tempstyle = yaml.load(open('styles/' + namedstyle + '.yaml','r'))
+    vars.update(tempstyle)
 
-for namedstyle in style_aliases[options.style].split(','):
-  items.update(styles[namedstyle].items())
-   
-style = items
-print (items)
+style = vars
+
 if options.full:
   print ("###### level 0 ######")
   for k,v in style.items():
@@ -56,8 +54,8 @@ if options.full:
         else:
           print ("#define _%s%d %s"%(k,i,v[i]))
       else:
-        print ("#define _%s%d %s"%(k,i,v))
-       
+          print ("#define _%s%d %s"%(k,i,v))
+            
 if options.level != -1:
   level = options.level
   for k,v in style.items():
