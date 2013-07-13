@@ -1,14 +1,14 @@
 waterarea_data:
   0: >
-    way from (select way,osm_id,OSM_NAME_COLUMN as name,waterway as type from 
-    OSM_PREFIX_polygon where \"natural\"='water' or landuse='basin' or 
-    landuse='reservoir' or waterway='riverbank') as foo using unique osm_id 
-    using srid=OSM_SRID
+    "way from (select way,osm_id,OSM_NAME_COLUMN as name,waterway as type from
+    OSM_PREFIX_polygon where \"natural\"='water' or landuse='basin' or
+    landuse='reservoir' or waterway='riverbank') as foo using unique osm_id
+    using srid=OSM_SRID"
 waterways_data:
   0: >
-    way from (select way,waterway as type,osm_id, OSM_NAME_COLUMN as name from 
-    OSM_PREFIX_line where waterway IN ('river', 'stream', 'canal')) as foo 
-    using unique osm_id using srid=OSM_SRID
+    "way from (select way,waterway as type,osm_id, OSM_NAME_COLUMN as name from
+    OSM_PREFIX_line where waterway IN ('river', 'stream', 'canal')) as foo
+    using unique osm_id using srid=OSM_SRID"
 places_data:
   0: >
     way from (select osm_id, way, OSM_NAME_COLUMN as name, place as type from 

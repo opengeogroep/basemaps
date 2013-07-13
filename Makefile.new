@@ -47,65 +47,9 @@ here=`pwd`
 
 all:$(mapfile) boundaries.sql
 
+# We only need to generate once
 generated/$(STYLE)style.msinc: pyMapFile.py
 	python pyMapFile.py -s $(STYLE) -g > $@
-
-generated/$(STYLE)level0.msinc: pyMapFile.py
-	python pyMapFile.py  -s $(STYLE) -l 0 > $@ 
-
-generated/$(STYLE)level1.msinc: pyMapFile.py
-	python pyMapFile.py  -s $(STYLE) -l 1 > $@ 
-
-generated/$(STYLE)level2.msinc: pyMapFile.py
-	python pyMapFile.py  -s $(STYLE) -l 2 > $@ 
-
-generated/$(STYLE)level3.msinc: pyMapFile.py
-	python pyMapFile.py  -s $(STYLE) -l 3 > $@ 
-
-generated/$(STYLE)level4.msinc: pyMapFile.py
-	python pyMapFile.py  -s $(STYLE) -l 4 > $@ 
-
-generated/$(STYLE)level5.msinc: pyMapFile.py
-	python pyMapFile.py  -s $(STYLE) -l 5 > $@ 
-
-generated/$(STYLE)level6.msinc: pyMapFile.py
-	python pyMapFile.py  -s $(STYLE) -l 6 > $@ 
-
-generated/$(STYLE)level7.msinc: pyMapFile.py
-	python pyMapFile.py  -s $(STYLE) -l 7 > $@ 
-
-generated/$(STYLE)level8.msinc: pyMapFile.py
-	python pyMapFile.py  -s $(STYLE) -l 8 > $@ 
-
-generated/$(STYLE)level9.msinc: pyMapFile.py
-	python pyMapFile.py  -s $(STYLE) -l 9 > $@ 
-
-generated/$(STYLE)level10.msinc: pyMapFile.py
-	python pyMapFile.py  -s $(STYLE) -l 10 > $@
-
-generated/$(STYLE)level11.msinc: pyMapFile.py
-	python pyMapFile.py  -s $(STYLE) -l 11 > $@
-
-generated/$(STYLE)level12.msinc: pyMapFile.py
-	python pyMapFile.py  -s $(STYLE) -l 12 > $@
-
-generated/$(STYLE)level13.msinc: pyMapFile.py
-	python pyMapFile.py  -s $(STYLE) -l 13 > $@
-
-generated/$(STYLE)level14.msinc: pyMapFile.py
-	python pyMapFile.py  -s $(STYLE) -l 14 > $@
-
-generated/$(STYLE)level15.msinc: pyMapFile.py
-	python pyMapFile.py  -s $(STYLE) -l 15 > $@
-
-generated/$(STYLE)level16.msinc: pyMapFile.py
-	python pyMapFile.py  -s $(STYLE) -l 16 > $@
-
-generated/$(STYLE)level17.msinc: pyMapFile.py
-	python pyMapFile.py  -s $(STYLE) -l 17 > $@
-
-generated/$(STYLE)level18.msinc: pyMapFile.py
-	python pyMapFile.py  -s $(STYLE) -l 18 > $@
 
 $(mapfile):$(template) $(includes)
 	$(CPP) -D_debug=$(DEBUG) -D_layerdebug=$(LAYERDEBUG)  -DOSM_PREFIX=$(OSM_PREFIX) -DOSM_SRID=$(OSM_SRID) -P -o $(mapfile) $(template) -DTHEME=$(STYLE) -D_proj_lib=\"$(here)\" -Igenerated

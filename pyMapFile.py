@@ -26,36 +26,67 @@ parser.add_option("-s", "--style", action="store", dest="style", default="defaul
 
 (options, args) = parser.parse_args()
 
-for namedstyle in options.style.split(','):
-  # skip default style, it is already loaded and 
-  # used to make sure a user doesn't forget to set a variable in the dict
-  if not (namedstyle == 'default'):
-    # load the custom style and override default.
-    tempstyle = yaml.load(open('styles/' + namedstyle + '.yaml','r'))
-    vars.update(tempstyle)
+# skip default style, it is already loaded and 
+# used to make sure a user doesn't forget to set a variable in the dict
+if not (options.style == 'default'):
+  # load the custom style and override default.
+  tempstyle = yaml.load(open('styles/' + options.style + '.yaml','r'))
+
+  #check to see if one or more OTHER styles need to be included; load them first!
+  if (len(tempstyle['include_styles']) > 0):
+    for namedstyle in tempstyle['include_styles'].split(','):
+      # skip default style, it is already loaded and 
+      # used to make sure a user doesn't forget to set a variable in the dict
+      if not (namedstyle == 'default'):
+        # load the custom style and override default.
+        tempstyle2 = yaml.load(open('styles/' + namedstyle + '.yaml','r'))
+        vars.update(tempstyle2)  
+
+  vars.update(tempstyle)
 
 style = vars
 
 if options.full:
-  print ("###### level 0 ######")
+  #write directly to file instead of parsing the output of print..
+  f = open('generated/'+ options.style + 'style.msinc', 'w')
+  f.write ("###### level 0 ######")
+  f.write("\n")
   for k,v in style.items():
     if type(v) is dict:
-      print ("#define _%s0 %s"%(k,v[0]))
+      f.write("#define _%s0 %s"%(k,v[0]))
+      f.write("\n")
     else:
-      print ("#define _%s0 %s"%(k,v))
+      f.write("#define _%s0 %s"%(k,v))
+      f.write("\n")
 
   for i in range(1,19):
-    print ()
-    print ("###### level %d ######"%(i))
+    f.write("\n")
+    f.write("###### level %d ######"%(i))
+    f.write("\n")
     for k,v in style.items():
       if type(v) is dict:
         if not i in v:
-          print ("#define _%s%d _%s%d"%(k,i,k,i-1))
+          f.write("#define _%s%d _%s%d"%(k,i,k,i-1))
+          f.write("\n")
         else:
-          print ("#define _%s%d %s"%(k,i,v[i]))
+          f.write("#define _%s%d %s"%(k,i,v[i]))
+          f.write("\n")
       else:
-          print ("#define _%s%d %s"%(k,i,v))
-            
+          f.write("#define _%s%d %s"%(k,i,v))
+          f.write("\n")
+  f.close()
+
+  for i in range(19):
+    f = open('generated/'+ options.style + 'level' + str(i) + '.msinc', 'w')
+    for k,v in style.items():
+      f.write("#undef _%s"%(k))
+      f.write("\n")
+    for k,v in style.items():
+      f.write("#define _%s _%s%s"%(k,k,i))
+      f.write("\n")
+    f.close()
+
+# Per level generation, not needed anymore, but left here for backward compatibility
 if options.level != -1:
   level = options.level
   for k,v in style.items():
@@ -63,4 +94,3 @@ if options.level != -1:
 
   for k,v in style.items():
     print ("#define _%s _%s%s"%(k,k,level))
-
