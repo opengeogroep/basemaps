@@ -81,7 +81,7 @@ vars= {
       3:'"init=epsg:3857"',
    },
    
-   
+   'display_grid': 0,
    ##### water #####
    'waterarea_data': {
       0: '"geometry from (select geometry,osm_id ,OSM_NAME_COLUMN as name,type from OSM_PREFIX_waterareas_gen0) as foo using unique osm_id using srid=OSM_SRID"',
@@ -179,12 +179,12 @@ vars= {
       10:'"geometry from (select geometry ,osm_id, type, OSM_NAME_COLUMN as name from OSM_PREFIX_landusages_gen1 \
       where type in (\'forest\',\'pedestrian\',\'cemetery\',\'industrial\',\'commercial\',\
       \'brownfield\',\'residential\',\'school\',\'college\',\'university\',\
-      \'military\',\'park\',\'golf_course\',\'hospital\',\'parking\',\'stadium\',\'sports_center\',\
+      \'military\',\'park\',\'golf_course\',\'grass\',\'hospital\',\'parking\',\'stadium\',\'sports_center\',\
       \'pitch\') order by area desc) as foo using unique osm_id using srid=OSM_SRID"',
       12:'"geometry from (select geometry ,osm_id, type, OSM_NAME_COLUMN as name from OSM_PREFIX_landusages \
       where type in (\'forest\',\'pedestrian\',\'cemetery\',\'industrial\',\'commercial\',\
       \'brownfield\',\'residential\',\'school\',\'college\',\'university\',\
-      \'military\',\'park\',\'golf_course\',\'hospital\',\'parking\',\'stadium\',\'sports_center\',\
+      \'military\',\'park\',\'golf_course\',\'grass\',\'hospital\',\'parking\',\'stadium\',\'sports_center\',\
       \'pitch\') order by area desc) as foo using unique osm_id using srid=OSM_SRID"'
    },
 
@@ -209,6 +209,8 @@ vars= {
    'residential_lbl_ol_width': 2,
 
    'park_clr': '"#DCDCB4"',
+   'park_ol_clr': '"#DCDCB4"',
+   'park_ol_width': 0,
    'display_park_lbl' : {0:0, 11:1},
    'park_font': "sc",
    'park_lbl_size': 8,
@@ -239,6 +241,13 @@ vars= {
    'sports_lbl_clr': '0 0 0',
    'sports_lbl_ol_clr': "255 255 255",
    'sports_lbl_ol_width': 2,
+
+   'display_cycleway_lbl' : {0:0, 12:1},
+   'cycleway_font': "sc",
+   'cycleway_lbl_size': 8,
+   'cycleway_lbl_clr': '0 0 0',
+   'cycleway_lbl_ol_clr': "255 255 255",
+   'cycleway_lbl_ol_width': 2,
 
    'display_pedestrian_lbl' : {0:0, 12:1},
    'pedestrian_font': "sc",
@@ -303,6 +312,8 @@ vars= {
    'other_bridge_width':{0:0.5,14:1},
    'pedestrian_bridge_clr':"136 136 136",
    'pedestrian_bridge_width':{0:0.5,14:1},
+   'cycleway_bridge_clr':"136 136 136",
+   'cycleway_bridge_width':{0:0.5,14:1},
 
    'display_highways': {
       0:0,
@@ -336,11 +347,14 @@ vars= {
       10:1
    },
    'motorway_font': "scb",
+   'motorway_lbl_angle': 'FOLLOW',
    'motorway_lbl_size': {
       0:8,
       14:9
    },
    'motorway_lbl_clr': '"#555555"',
+   'motorway_lbl_ol_clr': '"#555555"',
+   'motorway_lbl_ol_width': 0,
    'motorway_ol_width': {
       0:0.5,
       10:1
@@ -374,11 +388,14 @@ vars= {
       10:1
    },
    'trunk_font': "scb",
+   'trunk_lbl_angle': 'FOLLOW',
    'trunk_lbl_size': {
       0:8,
       14:9
    },
    'trunk_lbl_clr': '"#555555"',
+   'trunk_lbl_ol_clr': '"#555555"',
+   'trunk_lbl_ol_width': 0,
    'trunk_ol_width': {
       0:0.5,
       10:1
@@ -523,7 +540,7 @@ vars= {
    },
    'label_other_roads': {
       0:0,
-      15:1
+      17:1
    },
    'other_font': "sc",
    'other_lbl_size': {
@@ -535,6 +552,38 @@ vars= {
    'other_lbl_ol_width': 2,
    'other_ol_width': 1,
    'other_ol_clr': "0 0 0",
+
+   'display_cycleway': {
+      0:0,
+      12:1
+   },
+   'display_cycleway_outline': 0,
+   'cycleway_clr': '"#f2f2ed"',
+   'cycleway_width': {
+      0:0,
+      11:0.5,
+      12:0.75,
+      13:1,
+      14:1.5,
+      15:2,
+      16:2.5,
+      17:3,
+      18:3.5,
+   },
+   'label_cycleway': {
+      0:0,
+      15:1
+   },
+   'cycleway_font': "sc",
+   'cycleway_lbl_size': {
+      0:0,
+      15:8,
+   },
+   'cycleway_lbl_clr': '"#333333"',
+   'cycleway_lbl_ol_clr': '255 255 255',
+   'cycleway_lbl_ol_width': 2,
+   'cycleway_ol_width': 1,
+   'cycleway_ol_clr': "0 0 0",
 
    'display_pedestrian': {
       0:0,
@@ -755,6 +804,7 @@ vars= {
       15:1
    },
    'building_clr': '"#bbbbbb"',
+   'building_opacity': 50,
    'building_ol_clr': '"#333333"',
    'building_ol_width': {
       0:0,
@@ -988,6 +1038,323 @@ styles = {
          17:0
       }
    },
+   'geluidsnet':{
+      'building_ol_width': 0,
+      'waterarea_font': "sco",
+      'waterarea_lbl_size': 6,
+      'waterarea_lbl_clr': '"#6B94B0"',
+      'waterarea_lbl_ol_clr': '"#94cceb"',
+      'waterarea_lbl_ol_width': 1,
+
+      'park_font': "sco",
+      'park_lbl_size': 6,
+      'park_lbl_clr': '"#96b68a"',
+      'park_lbl_ol_clr': '"#deebc9"',
+      'park_lbl_ol_width': 1,
+      'park_clr': '"#effbd6"',
+      'park_ol_clr': '"#effbd6"',
+      'park_ol_width': 0,
+
+      'display_river_lbl': 0,
+      'display_stream_lbl': 0,
+      'display_canal_lbl': 0,
+      'display_residential_lbl': 0,
+      'display_industrial_lbl': 0,
+      
+      'motorway_clr': '"#a8a8a8"',
+      'motorway_ol_clr': '"#cccccc"',
+      'motorway_lbl_angle': 0,
+      'motorway_lbl_clr': '"#cccccc"',
+      'motorway_width': {
+         0:2,
+         15:3
+      },
+      'trunk_width': {
+         0:1.5,
+         15:2.5
+      },
+      'primary_clr': '"#a8a8a8"',
+      'primary_ol_clr': '"#cccccc"',
+
+      'primary_width': {
+         0:1,
+         15:2
+      },
+      'secondary_clr': '"#a8a8a8"',
+      'secondary_ol_clr': '"#cccccc"',
+      'secondary_width': {
+         0:1,
+         15:2
+      },
+      'tertiary_clr':'"#a8a8a8"',
+      'tertiary_ol_clr':'"#cccccc"',
+      'tertiary_width': {
+         0:0.6,
+         15:0.8
+      },
+      'label_tertiaries': {
+          0:0,
+          18:1
+      },
+      
+      'trunk_lbl_angle': 0,
+      'trunk_lbl_clr': '"#000000"',
+      'trunk_clr':'"#a8a8a8"',
+      'trunk_ol_clr': '"#cccccc"',
+      'label_trunks': {
+         0:0,
+         10:1
+      },
+      'display_other_roads': {
+         0:0,
+         16:1
+      },
+
+      'industrial_clr': '"#c5c1b4"',
+      'residential_clr':'"#fcfaf3"',
+      'cycleway_clr': '"#a8a8a8"',
+      'cycleway_ol_clr':'"#cccccc"',
+      'pedestrian_clr': '"#a8a8a8"',
+      'pedestrian_ol_clr':'"#cccccc"',
+      'footway_clr': '"#cccccc"',
+      'footway_ol_clr': '"#cccccc"',      
+      'other_clr':'"#a8a8a8"',
+      'other_ol_clr':'"#cccccc"',
+      'building_clr': '"#504948"',
+      'building_opacity': 0,
+      'waterarea_clr': '"#dbe4ff"',
+      'ocean_clr': '"#dbe4ff"',
+      'river_clr': '"#dbe4ff"',
+      'stream_clr': '"#dbe4ff"',
+      'canal_clr': '"#dbe4ff"',
+      'land_clr': '"#fffcf5"',
+      'forest_clr': '"#c7e19e"',
+      
+      'track_clr': '"#ffffff"',
+      'display_buildings': {
+         0: 0,
+         13:1
+      },
+
+      'display_motorway_outline': 0,
+      'display_trunk_outline': 0,
+      'display_primary_outline': 0,
+      'display_secondary_outline': 0,
+      'display_tertiary_outline': 0,
+      'display_other_outline': 0,
+      'display_track_outline': 0,
+      'display_cycleway_outline': 0,
+      'display_pedestrian_outline': 0,
+      'display_footway_outline': 0,
+      'track_pattern': '1 0',
+      'footway_pattern': '1 0',
+      'cycleway_width': {
+         0:0,
+         11:0.5,
+         12:0.75,
+         13:1,
+         14:1.5,
+         15:2,
+         16:2.5,
+         17:3,
+         18:3.5,
+      },
+      'pedestrian_width': {
+         0:0,
+         11:0.5,
+         12:0.75,
+         13:1,
+         14:1.5,
+         15:2,
+         16:2.5,
+         17:3,
+         18:3.5,
+      },
+      'footway_width': {
+         0:0,
+         11:0.1,
+         12:0.25,
+         13:0.5,
+         14:0.75,
+         15:1,
+         16:1.5,
+         17:2,
+         18:2.5,
+      },
+      'cycleway_ol_width': {
+         0:0.5,
+         17:1
+      },
+      'pedestrian_ol_width': {
+         0:0.5,
+         17:1
+      },
+      'footway_ol_width': 0,
+   },
+   'brt':{
+      'display_grid': 1,
+      'building_ol_width': 0,
+      'waterarea_font': "sco",
+      'waterarea_lbl_size': 6,
+      'waterarea_lbl_clr': '"#6B94B0"',
+      'waterarea_lbl_ol_clr': '"#94cceb"',
+      'waterarea_lbl_ol_width': 1,
+
+      'park_font': "sco",
+      'park_lbl_size': 6,
+      'park_lbl_clr': '"#96b68a"',
+      'park_lbl_ol_clr': '"#deebc9"',
+      'park_lbl_ol_width': 1,
+
+      'display_river_lbl': 0,
+      'display_stream_lbl': 0,
+      'display_canal_lbl': 0,
+      'display_residential_lbl': 0,
+      'display_industrial_lbl': 0,
+      'motorway_clr': '"#856dc0"',
+      'motorway_ol_clr': '"#3c3d3d"',
+      'motorway_lbl_angle': 0,
+      'motorway_lbl_clr': '"#ffffff"',
+      'motorway_lbl_ol_clr': '"#ff0000"',
+      'motorway_lbl_ol_width': 1,
+      'trunk_clr':'"#d05a61"',
+      'trunk_ol_clr': '"#3c3d3d"',
+      'label_trunks': {
+         0:0,
+         10:1
+      },
+      'trunk_lbl_angle': 0,
+      'trunk_lbl_clr': '"#000000"',
+      'trunk_lbl_ol_clr': '"#ffff00"',
+      'trunk_lbl_ol_width': 1,
+      'primary_clr': '"#d05a61"',
+      'primary_ol_clr': '"#646565"',
+      'secondary_clr': '"#f4af36"',
+      'secondary_ol_clr': '"#646565"',
+      'tertiary_clr':'"#fff391"',
+      'tertiary_ol_clr':'"#646565"',
+      'industrial_clr': '"#c5c1b4"',
+      'residential_clr':'"#e6e6e6"',
+      'cycleway_clr': '"#e4b3b3"',
+      'cycleway_ol_clr':'"#646565"',
+      'pedestrian_clr': '"#e4b3b3"',
+      'pedestrian_ol_clr':'"#646565"',
+      'footway_clr': '"#cccccc"',
+      'footway_ol_clr': '"#cccccc"',      
+      'other_clr':'"#fbfafb"',
+      'other_ol_clr':'"#646565"',
+      'building_clr': '"#504948"',
+      'building_opacity': 100,
+      'waterarea_clr': '"#94cceb"',
+      'ocean_clr': '"#93cae1"',
+      'river_clr': '"#94cceb"',
+      'stream_clr': '"#94cceb"',
+      'canal_clr': '"#94cceb"',
+      'land_clr': '"#f6f4e0"',
+      'park_clr': '"#deebc9"',
+      'park_ol_clr': '"#cccccc"',
+      'park_ol_width': 0.5,
+      'forest_clr': '"#96b68a"',
+      'label_tertiaries': {
+          0:0,
+          18:1
+      },
+      'track_clr': '"#ffffff"',
+      'display_buildings': {
+         0: 0,
+         13:1
+      },
+      'display_motorway_outline': 1,
+      'display_trunk_outline': 1,
+      'display_primary_outline': 1,
+      'display_secondary_outline': 1,
+      'display_tertiary_outline': 1,
+      'display_other_outline': {
+         0:0,
+         14:1
+      },
+      'display_track_outline': 0,
+      'display_cycleway_outline': 1,
+      'display_pedestrian_outline': 1,
+      'display_footway_outline': 0,
+      'track_pattern': '1 0',
+      'footway_pattern': '1 0',
+      'cycleway_width': {
+         0:0,
+         11:0.5,
+         12:0.75,
+         13:1,
+         14:1.5,
+         15:2,
+         16:2.5,
+         17:3,
+         18:3.5,
+      },
+      'pedestrian_width': {
+         0:0,
+         11:0.5,
+         12:0.75,
+         13:1,
+         14:1.5,
+         15:2,
+         16:2.5,
+         17:3,
+         18:3.5,
+      },
+      'footway_width': {
+         0:0,
+         11:0.1,
+         12:0.25,
+         13:0.5,
+         14:0.75,
+         15:1,
+         16:1.5,
+         17:2,
+         18:2.5,
+      },
+      'cycleway_ol_width': {
+         0:0.5,
+         17:1
+      },
+      'pedestrian_ol_width': {
+         0:0.5,
+         17:1
+      },
+      'footway_ol_width': 0,
+   #terrein-vlak
+    #aanlegsteiger
+    #akkerland
+    #basaltblokken, steenglooiing
+    #bebouwd gebied
+    #boomgaard (!met ARCGIS TDN symbool)                        (landuse=orchard)
+    #boomkwekerij (!met ARCGIS TDN symbool)                     (landuse=orchard)
+    #bos: gemengd bos                                           (landuse=wood,wood=mixed) & (natural=wood) & (landuse=forest)
+    #bos: griend                                                (landuse=wood,wood=?)
+    #bos: loofbos                                               (landuse=wood,wood=deciduous)
+    #bos: naaldbos                                              (landuse=wood,wood=coniferous)
+    #dodenakker
+    #fruitkwekerij(!met ARCGIS TDN symbool)
+    #grasland
+    #heide
+    #overig
+    #populieren
+    #spoorbaanlichaam
+    #zand
+    #dodenakker met bos
+    #laadperron
+    #onbekend
+   #waterdeel vlak omlijnd
+    # ... kijken wanneer deze toe te passen
+   #waterdeel-vlak
+    #droogvallend                                               (natural=wetland)
+    #meer, plas, ven, vijver
+    #waterloop
+    #zee
+   #terrein-vlak drassig
+    #(1:dras, moerassig) (!met ARCGIS TDN symbool)
+    #(2:dras, moerassig,met riet) (!met ARCGIS TDN symbool)
+   
+   },
    'outlined':{
       'display_motorway_outline': {
          0:0,
@@ -1050,6 +1417,15 @@ styles = {
          17:1
       },
       'other_ol_clr': '0 0 0',
+      'display_cycleway_outline': {
+         0:0,
+         13:1
+      },
+      'cycleway_ol_width': {
+         0:0.5,
+         17:1
+      },
+      'cycleway_ol_clr': '0 0 0',
       'display_pedestrian_outline': {
          0:0,
          13:1
@@ -1105,6 +1481,7 @@ styles = {
          0:'193 181 157',
          14:"255 255 255"
       },
+      'cycleway_clr': '250 250 245',
       'pedestrian_clr': '250 250 245',
       'forest_clr': "203 216 195",
       'industrial_clr': "209 208 205",
@@ -1125,6 +1502,7 @@ styles = {
       'secondary_ol_clr': '193 181 157',
       'tertiary_ol_clr': '193 181 157',
       'other_ol_clr': '193 181 157',
+      'cycleway_ol_clr': '193 181 157',
       'pedestrian_ol_clr': '193 181 157',
       'display_buildings':0
    },
@@ -1170,7 +1548,7 @@ styles = {
       'secondary_ol_width': 0.2,
       'tertiary_ol_width': 0.2,
       'other_ol_width': 0.2,
-
+      'cycleway_clr': '"#fafaf5"',
       'pedestrian_clr': '"#fafaf5"',
       'forest_clr': '188 220 180',
       'industrial_clr': '"#ebe5d9"',
@@ -1191,6 +1569,7 @@ styles = {
       'secondary_ol_clr': '0 0 0',
       'tertiary_ol_clr': '0 0 0',
       'other_ol_clr': '0 0 0',
+      'cycleway_ol_clr': '0 0 0',
       'pedestrian_ol_clr': '0 0 0',
       'footway_clr': '"#7f7f7f"'
    },
@@ -1213,6 +1592,7 @@ styles = {
          0:'"#aaaaaa"',
          13:'"#ffffff"'
       },
+      'cycleway_clr': '"#fafaf5"',
       'pedestrian_clr': '"#fafaf5"',
       'forest_clr': '"#dcdcb4"',
       'industrial_clr': '"#ebe5d9"',
@@ -1233,6 +1613,7 @@ styles = {
       'secondary_ol_clr': '"#bbb8b4"',
       'tertiary_ol_clr': '"#b7ac9a"',
       'other_ol_clr': '"#b7ac9a"',
+      'cycleway_ol_clr': '193 181 157',
       'pedestrian_ol_clr': '193 181 157',
       'footway_clr': '"#7f7f7f"'
    },
@@ -1263,12 +1644,12 @@ styles = {
          9:'"way from (select way, osm_id, name, type from (select way, st_area(way) as area ,osm_id, (case when landuse is not null then landuse else (case when \\\"natural\\\" is not null then \\\"natural\\\" else (case when leisure is not null then leisure else amenity end) end) end) as type, OSM_NAME_COLUMN as name from OSM_PREFIX_polygon) as osm2 \
          where type in (\'forest\',\'pedestrian\',\'cemetery\',\'industrial\',\'commercial\',\
          \'brownfield\',\'residential\',\'school\',\'college\',\'university\',\
-         \'military\',\'park\',\'golf_course\',\'hospital\',\'parking\',\'stadium\',\'sports_center\',\
+         \'military\',\'park\',\'golf_course\',\'grass\',\'hospital\',\'parking\',\'stadium\',\'sports_center\',\
          \'pitch\') order by area desc) as foo using unique osm_id using srid=OSM_SRID"',
          12:'"way from (select way, osm_id, name, type from (select way , st_area(way) as area ,osm_id, (case when landuse is not null then landuse else (case when \\\"natural\\\" is not null then \\\"natural\\\" else (case when leisure is not null then leisure else amenity end) end) end) as type, OSM_NAME_COLUMN as name from OSM_PREFIX_polygon) as osm2 \
          where type in (\'forest\',\'pedestrian\',\'cemetery\',\'industrial\',\'commercial\',\
          \'brownfield\',\'residential\',\'school\',\'college\',\'university\',\
-         \'military\',\'park\',\'golf_course\',\'hospital\',\'parking\',\'stadium\',\'sports_center\',\
+         \'military\',\'park\',\'golf_course\',\'grass\',\'hospital\',\'parking\',\'stadium\',\'sports_center\',\
          \'pitch\') order by area desc) as foo using unique osm_id using srid=OSM_SRID"'
       },
       'roads_data': {
@@ -1302,6 +1683,12 @@ style_aliases = {
    # a style resembling the google-maps theme
    "google":"default,outlined,google",
 
+   # brt styling for top10 (Netherlands) originated from the SLD's and QGIS implementation of Jan Willem van Aalst
+   "brt":"brt",
+
+   # geluidsnet styling
+   "geluidsnet":"geluidsnet",
+   
    # same style as above, but using data coming from an osm2pgsql schema rather than imposm
    "googleosm2pgsql":"default,outlined,google,osm2pgsql",
    "bing":"default,outlined,bing",
@@ -1320,37 +1707,37 @@ parser.add_option("-s", "--style",
 
 (options, args) = parser.parse_args()
 
-items = vars.items()
-for namedstyle in style_aliases[options.style].split(','):
-   items = items + styles[namedstyle].items()
+items = dict(vars.items())
 
-style = dict(items)
+for namedstyle in style_aliases[options.style].split(','):
+   items.update(styles[namedstyle].items())
+   
+style = items
 
 if options.full:
-   print "###### level 0 ######"
-   for k,v in style.iteritems():
+   print ("###### level 0 ######")
+   for k,v in style.items():
       if type(v) is dict:
-         print "#define _%s0 %s"%(k,v[0])
+         print ("#define _%s0 %s"%(k,v[0]))
       else:
-         print "#define _%s0 %s"%(k,v)
-
+         print ("#define _%s0 %s"%(k,v))
 
    for i in range(1,19):
-      print
-      print "###### level %d ######"%(i)
-      for k,v in style.iteritems():
+      print ()
+      print ("###### level %d ######"%(i))
+      for k,v in style.items():
          if type(v) is dict:
-            if not v.has_key(i):
-               print "#define _%s%d _%s%d"%(k,i,k,i-1)
+            if not i in v:
+               print ("#define _%s%d _%s%d"%(k,i,k,i-1))
             else:
-               print "#define _%s%d %s"%(k,i,v[i])
+               print ("#define _%s%d %s"%(k,i,v[i]))
          else:
-            print "#define _%s%d %s"%(k,i,v)
-
+            print ("#define _%s%d %s"%(k,i,v))
+            
 if options.level != -1:
    level = options.level
-   for k,v in style.iteritems():
-      print "#undef _%s"%(k)
+   for k,v in style.items():
+      print ("#undef _%s"%(k))
 
-   for k,v in style.iteritems():
-      print "#define _%s _%s%s"%(k,k,level)
+   for k,v in style.items():
+      print ("#define _%s _%s%s"%(k,k,level))

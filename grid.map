@@ -1,0 +1,26 @@
+#if _display_grid == 1
+LAYER
+  GROUP "default"
+  STATUS ON
+  NAME "kmgrid"
+  METADATA
+    "DESCRIPTION" "Grid"
+  END
+  TYPE LINE
+  STATUS ON
+  CLASS
+    NAME "Graticule"
+    STYLE
+      COLOR "#cccccc"
+      OPACITY 38
+    END
+  END
+  PROJECTION
+    "init=epsg:28992"
+  END
+  GRID
+    LABELFORMAT "%.0fkm"
+    MININTERVAL 1000
+  END
+END
+#endif

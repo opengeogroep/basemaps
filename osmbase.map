@@ -23,12 +23,13 @@ SIZE 800 800
 EXTENT OSM_EXTENT
 UNITS OSM_UNITS 
 IMAGECOLOR _ocean_clr0
+
 WEB
    METADATA
       "ows_enable_request"   "*"
       "wms_srs" "OSM_WMS_SRS"
       "labelcache_map_edge_buffer" "-10"
-      "wms_title" "osm france"
+      "wms_title" "OSM_MAP_TITLE"
    END
    IMAGEPATH "/mnt/data/tiles/mapserver/"
    IMAGEURL "/tiles/"
@@ -53,6 +54,7 @@ END
 #include "buildings.map"
 #include "borders.map"
 #include "places.map"
+#include "grid.map"
 
 #include LEVELPASTER(THEME,1)
 #include "land.map"
@@ -61,6 +63,7 @@ END
 #include "buildings.map"
 #include "borders.map"
 #include "places.map"
+#include "grid.map"
 
 #include LEVELPASTER(THEME,2)
 #include "land.map"
@@ -69,6 +72,7 @@ END
 #include "buildings.map"
 #include "borders.map"
 #include "places.map"
+#include "grid.map"
 
 #include LEVELPASTER(THEME,3)
 #include "land.map"
@@ -77,6 +81,7 @@ END
 #include "buildings.map"
 #include "borders.map"
 #include "places.map"
+#include "grid.map"
 
 #include LEVELPASTER(THEME,4)
 #include "land.map"
@@ -85,6 +90,7 @@ END
 #include "buildings.map"
 #include "borders.map"
 #include "places.map"
+#include "grid.map"
 
 #include LEVELPASTER(THEME,5)
 #include "land.map"
@@ -93,6 +99,7 @@ END
 #include "buildings.map"
 #include "borders.map"
 #include "places.map"
+#include "grid.map"
 
 #include LEVELPASTER(THEME,6)
 #include "land.map"
@@ -101,6 +108,7 @@ END
 #include "buildings.map"
 #include "borders.map"
 #include "places.map"
+#include "grid.map"
 
 #include LEVELPASTER(THEME,7)
 #include "land.map"
@@ -109,6 +117,7 @@ END
 #include "buildings.map"
 #include "borders.map"
 #include "places.map"
+#include "grid.map"
 
 #include LEVELPASTER(THEME,8)
 #include "land.map"
@@ -117,6 +126,7 @@ END
 #include "buildings.map"
 #include "borders.map"
 #include "places.map"
+#include "grid.map"
 
 #include LEVELPASTER(THEME,9)
 #include "land.map"
@@ -125,6 +135,7 @@ END
 #include "buildings.map"
 #include "borders.map"
 #include "places.map"
+#include "grid.map"
 
 #include LEVELPASTER(THEME,10)
 #include "land.map"
@@ -133,6 +144,7 @@ END
 #include "buildings.map"
 #include "borders.map"
 #include "places.map"
+#include "grid.map"
 
 #include LEVELPASTER(THEME,11)
 #include "land.map"
@@ -141,6 +153,7 @@ END
 #include "buildings.map"
 #include "borders.map"
 #include "places.map"
+#include "grid.map"
 
 #include LEVELPASTER(THEME,12)
 #include "land.map"
@@ -149,6 +162,7 @@ END
 #include "buildings.map"
 #include "borders.map"
 #include "places.map"
+#include "grid.map"
 
 #include LEVELPASTER(THEME,13)
 #include "land.map"
@@ -157,6 +171,7 @@ END
 #include "buildings.map"
 #include "borders.map"
 #include "places.map"
+#include "grid.map"
 
 #include LEVELPASTER(THEME,14)
 #include "land.map"
@@ -165,6 +180,7 @@ END
 #include "buildings.map"
 #include "borders.map"
 #include "places.map"
+#include "grid.map"
 
 #include LEVELPASTER(THEME,15)
 #include "land.map"
@@ -173,6 +189,7 @@ END
 #include "buildings.map"
 #include "borders.map"
 #include "places.map"
+#include "grid.map"
 
 #include LEVELPASTER(THEME,16)
 #include "land.map"
@@ -181,6 +198,7 @@ END
 #include "buildings.map"
 #include "borders.map"
 #include "places.map"
+#include "grid.map"
 
 #include LEVELPASTER(THEME,17)
 #include "land.map"
@@ -189,6 +207,7 @@ END
 #include "buildings.map"
 #include "borders.map"
 #include "places.map"
+#include "grid.map"
 
 #include LEVELPASTER(THEME,18)
 #include "land.map"
@@ -197,6 +216,7 @@ END
 #include "buildings.map"
 #include "borders.map"
 #include "places.map"
+#include "grid.map"
 
 SYMBOL
  name "citycircle"

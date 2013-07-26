@@ -1,0 +1,7 @@
+# Openbasiskaart: stijl zonder buildings vanaf Geonovum tile level 11 (level 17 in deze
+# mapfile), zodat BAG gebouwen kunnen worden gebruikt
+
+display_buildings:
+  0: 0
+  15: 1
+  17: 0
