@@ -7,6 +7,7 @@ include_styles: ""
 
 # Grid
 display_grid: 0
+grid_clr: '"#cccccc"'
 
 # Land
 land_clr: '"#E8E6E1"'
@@ -132,21 +133,16 @@ landusage_data:
     "geometry from (select geometry ,osm_id, type, OSM_NAME_COLUMN as name from OSM_PREFIX_landusages_gen0)
     as foo using unique osm_id using srid=OSM_SRID"
   9: >
-    "geometry from (select geometry ,osm_id, type, OSM_NAME_COLUMN as name from OSM_PREFIX_landusages_gen1
-    where type in ('forest','industrial','commercial','residential')) as foo using unique
+    "geometry from (select geometry ,osm_id, type, OSM_NAME_COLUMN as name from OSM_PREFIX_landusages_gen1) 
+    as foo using unique
     osm_id using srid=OSM_SRID"
   10: >
-    "geometry from (select geometry ,osm_id, type, OSM_NAME_COLUMN as name from OSM_PREFIX_landusages_gen1
-    where type in ('forest','pedestrian','cemetery','industrial','commercial',
-    'brownfield','residential','school','college','university','military','park','golf_course','grass',
-    'hospital','parking','stadium','sports_center','pitch') order by area desc) as foo using
+    "geometry from (select geometry ,osm_id, type, OSM_NAME_COLUMN as name from OSM_PREFIX_landusages_gen1 
+    order by area desc) as foo using
     unique osm_id using srid=OSM_SRID"
   12: >
-    "geometry from (select geometry ,osm_id, type, OSM_NAME_COLUMN as name from OSM_PREFIX_landusages
-    where type in ('forest','pedestrian','cemetery','industrial','commercial',
-    'brownfield','residential','school','college','university',
-    'military','park','golf_course','grass','hospital','parking','stadium','sports_center',
-    'pitch') order by area desc) as foo using unique osm_id using srid=OSM_SRID"
+    "geometry from (select geometry ,osm_id, type, OSM_NAME_COLUMN as name from OSM_PREFIX_landusages 
+    order by area desc) as foo using unique osm_id using srid=OSM_SRID"
 
 industrial_clr: '"#d1d1d1"'
 industrial_ol_clr: '"#d1d1d1"'
@@ -241,7 +237,8 @@ cemetery_lbl_size: 8
 cemetery_lbl_clr: '0 0 0'
 cemetery_lbl_ol_clr: '255 255 255'
 cemetery_lbl_ol_width: 2
-
+beach_clr: '"#FFF3D3"'
+heath_clr: '"#EBD2DB"'
 forest_clr: '"#C2D1B2"'
 display_forest_lbl:
   0: 0
@@ -657,6 +654,40 @@ track_lbl_ol_clr: '255 255 255'
 track_lbl_ol_width: 2
 track_ol_width: 1
 track_ol_clr: '"0 0 0"'
+
+display_construction:
+  0: 0
+  12: 1
+
+display_construction_outline: 0
+construction_clr:
+  0: '"#cccccc"'
+  15: '"#ffffff"'
+
+construction_width:
+  0: 0
+  11: 0.5
+  12: 0.75
+  15: 1
+
+construction_pattern:
+  0: '2 2'
+  15: '2 3'
+
+label_construction:  
+  0: 0
+  15: 1
+
+construction_font: sc
+construction_lbl_size:
+  0: 0
+  15: 8
+
+construction_lbl_clr: '"#cccccc"'
+construction_lbl_ol_clr: '255 255 255'
+construction_lbl_ol_width: 2
+construction_ol_width: 1
+construction_ol_clr: '"0 0 0"'
 
 display_footways:
   0: 0

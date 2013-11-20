@@ -1636,21 +1636,21 @@ styles = {
       },
       'landusage_data': {
          0:'"way from (select way, osm_id, name, type from (select way, st_area(way) as area, osm_id, (case when landuse is not null then landuse else (case when \\\"natural\\\" is not null then \\\"natural\\\" else (case when leisure is not null then leisure else amenity end) end) end) as type, OSM_NAME_COLUMN as name from OSM_PREFIX_polygon) as osm2 \
-         where type in (\'forest\',\'residential\')\
+         where type in (\'forest\',\'residential\',\'beach\')\
          order by area desc) as foo using unique osm_id using srid=OSM_SRID"',
          6:'"way from (select way, osm_id, name, type from (select way , st_area(way) as area ,osm_id, (case when landuse is not null then landuse else (case when \\\"natural\\\" is not null then \\\"natural\\\" else (case when leisure is not null then leisure else amenity end) end) end) as type, OSM_NAME_COLUMN as name from OSM_PREFIX_polygon) as osm2 \
-         where type in (\'forest\',\'industrial\',\'commercial\',\'residential\')\
+         where type in (\'forest\',\'industrial\',\'commercial\',\'residential\',\'beach\')\
          order by area desc) as foo using unique osm_id using srid=OSM_SRID"',
          9:'"way from (select way, osm_id, name, type from (select way, st_area(way) as area ,osm_id, (case when landuse is not null then landuse else (case when \\\"natural\\\" is not null then \\\"natural\\\" else (case when leisure is not null then leisure else amenity end) end) end) as type, OSM_NAME_COLUMN as name from OSM_PREFIX_polygon) as osm2 \
          where type in (\'forest\',\'pedestrian\',\'cemetery\',\'industrial\',\'commercial\',\
          \'brownfield\',\'residential\',\'school\',\'college\',\'university\',\
          \'military\',\'park\',\'golf_course\',\'grass\',\'hospital\',\'parking\',\'stadium\',\'sports_center\',\
-         \'pitch\') order by area desc) as foo using unique osm_id using srid=OSM_SRID"',
+         \'pitch\',\'beach\',\'sand\') order by area desc) as foo using unique osm_id using srid=OSM_SRID"',
          12:'"way from (select way, osm_id, name, type from (select way , st_area(way) as area ,osm_id, (case when landuse is not null then landuse else (case when \\\"natural\\\" is not null then \\\"natural\\\" else (case when leisure is not null then leisure else amenity end) end) end) as type, OSM_NAME_COLUMN as name from OSM_PREFIX_polygon) as osm2 \
          where type in (\'forest\',\'pedestrian\',\'cemetery\',\'industrial\',\'commercial\',\
          \'brownfield\',\'residential\',\'school\',\'college\',\'university\',\
          \'military\',\'park\',\'golf_course\',\'grass\',\'hospital\',\'parking\',\'stadium\',\'sports_center\',\
-         \'pitch\') order by area desc) as foo using unique osm_id using srid=OSM_SRID"'
+         \'pitch\',\'beach\',\'sand\') order by area desc) as foo using unique osm_id using srid=OSM_SRID"'
       },
       'roads_data': {
          0: '"way from (select osm_id,way,OSM_NAME_COLUMN as name,ref,highway as type, 0 as tunnel, 0 as bridge from OSM_PREFIX_line where highway in (\'motorway\',\'trunk\') order by z_order asc, st_length(way) asc) as foo using unique osm_id using srid=OSM_SRID"',

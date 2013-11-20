@@ -38,6 +38,18 @@ LAYER
 #endif
     END
     CLASS
+       EXPRESSION /beach|sand/
+       STYLE
+           COLOR _beach_clr
+       END
+    END
+    CLASS
+       EXPRESSION 'heath'
+       STYLE
+           COLOR _heath_clr
+       END
+    END
+    CLASS
        EXPRESSION 'residential'
        STYLE
           COLOR _residential_clr

@@ -1,5 +1,6 @@
 # Michelin
 
+include_styles: "outlined,centerlined"
 motorway_clr: "228 24 24"
 trunk_clr: "228 24 24"
 primary_clr:

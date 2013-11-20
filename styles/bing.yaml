@@ -1,3 +1,5 @@
+# Bing
+include_styles: "outlined"
 motorway_clr: '"#BAC3A8"'
 trunk_clr: '"#F2935D"'
 primary_clr:

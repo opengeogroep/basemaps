@@ -33,14 +33,15 @@ if not (options.style == 'default'):
   tempstyle = yaml.load(open('styles/' + options.style + '.yaml','r'))
 
   #check to see if one or more OTHER styles need to be included; load them first!
-  if (len(tempstyle['include_styles']) > 0):
-    for namedstyle in tempstyle['include_styles'].split(','):
-      # skip default style, it is already loaded and 
-      # used to make sure a user doesn't forget to set a variable in the dict
-      if not (namedstyle == 'default'):
-        # load the custom style and override default.
-        tempstyle2 = yaml.load(open('styles/' + namedstyle + '.yaml','r'))
-        vars.update(tempstyle2)  
+  if 'include_styles' in tempstyle:
+    if (len(tempstyle['include_styles']) > 0):
+      for namedstyle in tempstyle['include_styles'].split(','):
+        # skip default style, it is already loaded and 
+        # used to make sure a user doesn't forget to set a variable in the dict
+        if not (namedstyle == 'default'):
+          # load the custom style and override default.
+          tempstyle2 = yaml.load(open('styles/' + namedstyle + '.yaml','r'))
+          vars.update(tempstyle2)  
 
   vars.update(tempstyle)
 

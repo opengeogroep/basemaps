@@ -2,21 +2,23 @@
 LAYER
   GROUP "default"
   STATUS ON
-  NAME "kmgrid"
+  NAME layername(grid,_layer_suffix)
   METADATA
     "DESCRIPTION" "Grid"
   END
   TYPE LINE
   STATUS ON
+  MAXSCALEDENOM _maxscale
+  MINSCALEDENOM _minscale
   CLASS
     NAME "Graticule"
     STYLE
-      COLOR "#cccccc"
-      OPACITY 38
+      COLOR _grid_clr
+      OPACITY 50
     END
   END
   PROJECTION
-    "init=epsg:28992"
+        "init=epsg:OSM_SRID"
   END
   GRID
     LABELFORMAT "%.0fkm"

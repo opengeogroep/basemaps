@@ -1,3 +1,7 @@
+# Google style, but using data coming from an osm2pgsql schema rather than imposm
+
+include_styles: "outlined,google"
+
 waterarea_data:
   0: >
     "way from (select way,osm_id,OSM_NAME_COLUMN as name,waterway as type from

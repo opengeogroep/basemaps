@@ -3,17 +3,17 @@
 building_ol_width: 0
 waterarea_font: "sco"
 waterarea_lbl_size: 6
-waterarea_lbl_clr: "#6B94B0"
-waterarea_lbl_ol_clr: "#94cceb"
+waterarea_lbl_clr: '"#6B94B0"'
+waterarea_lbl_ol_clr: '"#94cceb"'
 waterarea_lbl_ol_width: 1
 
 park_font: "sco"
 park_lbl_size: 6
-park_lbl_clr: "#96b68a"
-park_lbl_ol_clr: "#deebc9"
+park_lbl_clr: '"#96b68a"'
+park_lbl_ol_clr: '"#deebc9"'
 park_lbl_ol_width: 1
-park_clr: "#effbd6"
-park_ol_clr: "#effbd6"
+park_clr: '"#effbd6"'
+park_ol_clr: '"#effbd6"'
 park_ol_width: 0
 
 display_river_lbl: 0
@@ -22,10 +22,10 @@ display_canal_lbl: 0
 display_residential_lbl: 0
 display_industrial_lbl: 0
 
-motorway_clr: "#a8a8a8"
-motorway_ol_clr: "#cccccc"
+motorway_clr: '"#a8a8a8"'
+motorway_ol_clr: '"#cccccc"'
 motorway_lbl_angle: 0
-motorway_lbl_clr: "#cccccc"
+motorway_lbl_clr: '"#cccccc"'
 motorway_width:
   0: 2
   15: 3
@@ -33,19 +33,19 @@ motorway_width:
 trunk_width:
   0: 1.5
   15: 2.5
-primary_clr: "#a8a8a8"
-primary_ol_clr: "#cccccc"
+primary_clr: '"#a8a8a8"'
+primary_ol_clr: '"#cccccc"'
 
 primary_width:
   0: 1
   15: 2
-secondary_clr: "#a8a8a8"
-secondary_ol_clr: "#cccccc"
+secondary_clr: '"#a8a8a8"'
+secondary_ol_clr: '"#cccccc"'
 secondary_width:
   0: 1
   15: 2
-tertiary_clr: "#a8a8a8"
-tertiary_ol_clr: "#cccccc"
+tertiary_clr: '"#a8a8a8"'
+tertiary_ol_clr: '"#cccccc"'
 tertiary_width:
   0: 0.6
   15: 0.8
@@ -54,9 +54,9 @@ label_tertiaries:
   18: 1
 
 trunk_lbl_angle: 0
-trunk_lbl_clr: "#000000"
-trunk_clr: "#a8a8a8"
-trunk_ol_clr: "#cccccc"
+trunk_lbl_clr: '"#000000"'
+trunk_clr: '"#a8a8a8"'
+trunk_ol_clr: '"#cccccc"'
 label_trunks:
   0: 0
   10: 1
@@ -65,42 +65,170 @@ display_other_roads:
   0: 0
   16: 1
 
-industrial_clr: "#c5c1b4"
-residential_clr: "#fcfaf3"
-cycleway_clr: "#a8a8a8"
-cycleway_ol_clr: "#cccccc"
-pedestrian_clr: "#a8a8a8"
-pedestrian_ol_clr: "#cccccc"
-footway_clr: "#cccccc"
-footway_ol_clr: "#cccccc"
-other_clr: "#a8a8a8"
-other_ol_clr: "#cccccc"
-building_clr: "#504948"
+industrial_clr: '"#c5c1b4"'
+residential_clr: '"#fcfaf3"'
+cycleway_clr: '"#a8a8a8"'
+cycleway_ol_clr: '"#cccccc"'
+pedestrian_clr: '"#a8a8a8"'
+pedestrian_ol_clr: '"#cccccc"'
+footway_clr: '"#cccccc"'
+footway_ol_clr: '"#cccccc"'
+other_clr: '"#a8a8a8"'
+other_ol_clr: '"#cccccc"'
+building_clr: '"#504948"'
 building_opacity: 0
-waterarea_clr: "#dbe4ff"
-ocean_clr: "#dbe4ff"
-river_clr: "#dbe4ff"
-stream_clr: "#dbe4ff"
-canal_clr: "#dbe4ff"
-land_clr: "#fffcf5"
-forest_clr: "#c7e19e"
-track_clr: "#ffffff"
+waterarea_clr: '"#dbe4ff"'
+ocean_clr: '"#dbe4ff"'
+river_clr: '"#dbe4ff"'
+stream_clr: '"#dbe4ff"'
+canal_clr: '"#dbe4ff"'
+land_clr: '"#fffcf5"'
+forest_clr: '"#c7e19e"'
+track_clr: '"#ffffff"'
 display_buildings:
   0: 0
   13: 1
+display_cities:
+  0: 0
+  8: 1
 
-display_motorway_outline: 0
-display_trunk_outline: 0
-display_primary_outline: 0
-display_secondary_outline: 0
-display_tertiary_outline: 0
-display_other_outline: 0
+display_towns:
+  0: 0
+  11: 1
+
+display_villages:
+  0: 0
+  14: 1
+  
+display_hamlets:
+  0: 0
+  15: 1
+
+city_lbl_size:
+  0: 0
+  8: 7
+  10: 8
+  11: 9
+  
+town_lbl_size:
+  0: 0
+  11: 7
+
+villages_lbl_size:
+  0: 0
+  14: 6
+
+hamlets_lbl_size:
+  0: 0
+  15: 5
+
+display_motorway_outline:
+  0: 0
+  14: 1
+display_trunk_outline:
+  0: 0
+  14: 1
+display_primary_outline:
+  0: 0
+  14: 1
+display_secondary_outline:
+  0: 0
+  14: 1
+display_tertiary_outline:
+  0: 0
+  14: 1
+  
 display_track_outline: 0
-display_cycleway_outline: 0
-display_pedestrian_outline: 0
+display_cycleway_outline:
+  0: 0
+  16: 1
+display_pedestrian_outline:
+  0: 0
+  16: 1
 display_footway_outline: 0
+display_other_outline:
+  0: 0
+  16: 1
+
 track_pattern: "1 0"
 footway_pattern: "1 0"
+
+cycleway_ol_width:
+  0: 0.5
+  17: 1
+
+pedestrian_ol_width:
+  0: 0.5
+  17: 1
+
+footway_ol_width: 0
+motorway_width:
+  0: 0.5
+  13: 1
+  14: 2
+  15: 3
+  16: 4
+  17: 5
+  18: 6
+trunk_width:
+  0: 0.5
+  13: 1
+  14: 2
+  15: 3
+  16: 4
+  17: 5
+  18: 6
+  
+primary_width:
+  0: 0.5
+  13: 0.75
+  14: 1
+  15: 1.5
+  16: 2
+  17: 2.5
+  18: 3
+secondary_width:
+  0: 0.5
+  13: 0.75
+  14: 1
+  15: 1.5
+  16: 2
+  17: 2.5
+  18: 3
+tertiary_width:
+  0: 0.5
+  13: 0.75
+  14: 1
+  15: 1.5
+  16: 2
+  17: 2.5
+  18: 3
+label_motorways:
+  0: 0
+  10: 1
+label_trunks:
+  0: 0
+  14: 1
+label_primaries:
+  0: 0
+  16: 1
+label_secondaries:
+  0: 0
+  16: 1
+label_tertiaries:
+  0: 0
+  17: 1
+label_other_roads:
+  0: 0
+  17: 1
+label_cycleway: 0
+label_track: 0
+label_pedestrian: 0
+
+other_clr:
+  0: '"#ffffff"'
+  16: '"#fbfafb"'
+  
 cycleway_width:
   0: 0
   11: 0.5
@@ -111,31 +239,32 @@ cycleway_width:
   16: 2.5
   17: 3
   18: 3.5
+
 pedestrian_width:
   0: 0
-  11: 0.5
-  12: 0.75
-  13: 1
-  14: 1.5
-  15: 2
-  16: 2.5
-  17: 3
-  18: 3.5
-footway_width:
-  0: 0
-  11: 0.1
-  12: 0.25
   13: 0.5
   14: 0.75
   15: 1
   16: 1.5
   17: 2
-  18: 2.5
-cycleway_ol_width:
-  0: 0.5
-  17: 1
-pedestrian_ol_width:
-  0: 0.5
-  17: 1
-footway_ol_width: 0
+  18: 4
+
+footway_width:
+  0: 0
+  13: 0.5
+  14: 0.75
+  15: 1
+  16: 1.5
+  17: 2
+  18: 4
+  
+other_width:
+  0: 0
+  13: 0.5
+  14: 0.75
+  15: 1
+  16: 1.5
+  17: 2
+  18: 4
+
 

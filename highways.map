@@ -91,6 +91,48 @@ LAYER
 
 
 
+##################################################
+## construction                                 ##
+##################################################
+
+#if _display_construction == 1
+    CLASS
+#if _display_bridges == 1
+        EXPRESSION "construction00"
+#else
+        EXPRESSION "construction"
+#endif
+#if _display_construction_outline
+        STYLE
+           WIDTH _construction_width
+           OUTLINEWIDTH _construction_ol_width
+           OUTLINECOLOR _construction_ol_clr
+        END
+#endif
+        STYLE
+            PATTERN _construction_pattern END
+            WIDTH _construction_width
+            COLOR _construction_clr
+        END
+#if _label_construction == 1
+        LABEL
+            TYPE TRUETYPE
+            PARTIALS FALSE
+            FONT _construction_font
+            SIZE _construction_lbl_size
+            MINDISTANCE 200
+            REPEATDISTANCE 400
+            ANGLE FOLLOW
+            COLOR _construction_lbl_clr
+            OUTLINECOLOR _construction_lbl_ol_clr
+            OUTLINEWIDTH _construction_lbl_ol_width
+            MINFEATURESIZE AUTO
+            BUFFER 3
+            ENCODING "UTF-8"
+        END
+#endif
+    END
+#endif
 
 
 ##################################################
