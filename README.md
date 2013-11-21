@@ -1,27 +1,46 @@
-- this package uses the a python script and the c preprocessor to build a
-complete mapfile from a set of templates and styling information.
+BaseMaps for mapserver 6.2
+==========================
 
-- the mapfiles are compatible with mapserver versions >= 6.0.1
+This is a python script and c preprocessor to build a
+complete mapfile from a set of templates and styling information for 
+a postgis database with openstreetmap data imported with imposm3.
 
-- the build process uses the gcc preprocessor extensively, you should have it installed on your
-system. On linux, check that the 'cpp' command is present. On OSX, the provided 'cpp' program is a shell
-wrapper that is not suitable: the Makefile is coded to call 'cpp-4.2', which you can change in case
+* the mapfiles are compatible with mapserver versions >= 6.2.0
+
+* the build process uses the gcc preprocessor extensively, you should 
+have it installed on your system. On linux, check that the 'cpp' command 
+is present. On OSX, the provided 'cpp' program is a shell wrapper that 
+is not suitable: the Makefile is coded to call 'cpp-4.2', which you can change in case
 you have another version installed.
 
-- The mapfiles rely on the database schema as created by a recent version of imposm. Until recently
-imposm did not create the landusages_gen and waterareas_gen tables. Since 2.3.0 this is not the case anymore.
-If you do not have the generalized tables, you can change the landusage_data and waterareas_data entries in
-generate_style.py so that it queries the non-generalized
-tables on the lower zoom levels (this will be slower for the lower zoom levels).
+* The mapfiles rely on the database schema as created by a recent 
+version of imposm3.
 
-- The generated mapfile can also be made to query an osm database created with osm2pgsql rather than imposm.
-This setup is not recommended as it will be much slower. To use the osm2pgsql schema, you should add the 'osm2pgsql'
-entry to the list of styles for an entry of style_aliases near the end of generate_style.py, e.g:
-   "bingosm2pgsql":"default,outlined,bing,osm2pgsql"
+How to
+------
 
-then run `make STYLE=bingosm2pgsql` to create the osm-bingosm2pgsql.map
+run:
+        make STYLE=<stylename
 
-- Most configuration and tweaks should be done in generate_style.py.
-documentation as to how to edit generate_style.py to adapt the rendering has yet to be done, but is simple.
-check http://trac.osgeo.org/mapserver/wiki/RenderingOsmDataUbuntu for a preliminary tutorial.
+Currently, the following styles are predefined:
+* default (the original style used with basemaps, inherited by the 
+other styles)
+* nobuildings (as default, but without openstreetmap buildings)
+* bing
+* centerlined
+* outlined
+* google
+* michelin
+* brt (a schema designed for public safety in the Netherlands)
+* (deprecated, needs fixing) osm2pgsql.yaml
+
+Configuration
+-------------
+Most configuration and tweaks should be done in:
+
+* styles/<stylename>.yaml
+
+If you want to create a new style, best practice is to copy default.yaml 
+and change it to fit your needs.
+
 
