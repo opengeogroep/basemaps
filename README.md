@@ -20,7 +20,7 @@ How to
 ------
 
 run:
-        make STYLE=<stylename
+        make STYLE=<stylename>
 
 Currently, the following styles are predefined:
 * default (the original style used with basemaps, inherited by the 
@@ -42,5 +42,4 @@ Most configuration and tweaks should be done in:
 
 If you want to create a new style, best practice is to copy default.yaml 
 and change it to fit your needs.
-
 
