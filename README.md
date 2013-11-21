@@ -16,11 +16,8 @@ you have another version installed.
 * The mapfiles rely on the database schema as created by a recent 
 version of imposm3.
 
-How to
+Styles
 ------
-
-run:
-        make STYLE=**stylename**
 
 Currently, the following styles are predefined:
 * default (the original style used with basemaps, inherited by the 
@@ -36,10 +33,26 @@ other styles)
 
 Configuration
 -------------
-Most configuration and tweaks should be done in:
+**First**:
+
+Tweak Makefile to reflect:
+* Database parameters **OSM_DB_CONNECTION**
+* Projection **OSM_SRID**
+* Map Extents **OSM_EXTENT**
+* Schema and tablename prefix **OSM_NAME_COLUMN**
+
+**Second** check that the style is how you want it:
 
 * styles/**stylename**.yaml
 
 If you want to create a new style, best practice is to copy default.yaml 
 and change it to fit your needs.
+
+**Finally**
+run:
+        make STYLE=**stylename**
+
+And pick up osm-**stylename**.map from the directory where you ran make
+
+Happy mapserving!
 
