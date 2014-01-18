@@ -144,10 +144,14 @@ LAYER
  
     CLASS
         EXPRESSION /park|grass|golf_course/
+#if _display_park_outline
+        STYLE
+           OUTLINEWIDTH _park_ol_width
+           OUTLINECOLOR _park_ol_clr
+        END
+#endif
         STYLE
             COLOR _park_clr
-            OUTLINECOLOR _park_ol_clr
-            OUTLINEWIDTH _park_ol_width
         END
 #if _display_park_lbl==1
         LABEL
