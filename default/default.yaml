@@ -171,6 +171,7 @@ residential_lbl_ol_width: 2
 park_clr: '"#DCDCB4"'
 park_ol_clr: '"#DCDCB4"'
 park_ol_width: 0
+display_park_outline: 0
 display_park_lbl:
   0: 0
   11: 1
