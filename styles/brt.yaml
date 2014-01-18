@@ -65,8 +65,16 @@ stream_clr: '"#94cceb"'
 canal_clr: '"#94cceb"'
 land_clr: '"#f6f4e0"'
 park_clr: '"#deebc9"'
-park_ol_clr: '"#cccccc"'
-park_ol_width: 0.5
+park_ol_clr: 
+  0: '"#deebc9"'
+  18: '"#cccccc"'
+park_ol_width: 
+  0: 0
+  18: 1
+display_park_outline: 
+  0: 0
+  18: 1
+  
 forest_clr: '"#96b68a"'
 label_tertiaries:
   0: 0
