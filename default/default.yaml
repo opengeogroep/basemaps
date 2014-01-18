@@ -1000,3 +1000,6 @@ hamlet_lbl_size:
 hamlet_size: 5
 hamlet_ol_clr: "0 0 0"
 hamlet_clr: "200 200 200"
+
+# Towers
+display_towers: 0

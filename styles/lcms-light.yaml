@@ -58,11 +58,6 @@ other_clr:
 land_clr: '"#f6f4e0"'
 park_clr: '"#deebc9"'
 
-
-
-
-
-
 display_grid: 
   0: 0
   14: 1
@@ -87,7 +82,14 @@ label_trunks:
 trunk_lbl_angle: 0
 trunk_lbl_ol_width: 1
 building_opacity: 100
-park_ol_width: 0.5
+
+park_ol_width: 
+  0: 0
+  18: 1
+display_park_outline: 
+  0: 0
+  18: 1
+
 label_tertiaries:
   0: 0
   18: 1
@@ -270,7 +272,7 @@ label_other_roads:
 label_cycleway: 0
 label_track: 0
 label_pedestrian: 0
-
+display_towers: 0
 cycleway_width:
   0: 0
   11: 0.5
@@ -299,7 +301,7 @@ footway_width:
   16: 1.5
   17: 2
   18: 4
-  
+
 other_width:
   0: 0
   13: 0.5
@@ -308,4 +310,3 @@ other_width:
   16: 1.5
   17: 2
   18: 4
-

@@ -18,7 +18,7 @@ LAYER
     END
   END
   PROJECTION
-        "init=epsg:OSM_SRID"
+        "init=epsg:OSM_GRID_SRID"
   END
   GRID
     LABELFORMAT "%.0fkm"

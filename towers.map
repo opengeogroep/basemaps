@@ -1,0 +1,46 @@
+#if _display_towers == 1
+LAYER
+    STATUS ON
+    PROJECTION
+        "init=epsg:OSM_SRID"
+    END
+    GROUP "default"
+    NAME layername(towers,_layer_suffix)
+    TYPE POINT
+    CONNECTIONTYPE postgis
+    CONNECTION "OSM_DB_CONNECTION"
+    DATA "geometry from (select geometry,osm_id, OSM_NAME_COLUMN as name from OSM_PREFIX_towers) as foo using unique osm_id using srid=OSM_SRID"
+    LABELITEM "name"
+    PROCESSING "LABEL_NO_CLIP=ON"
+    PROCESSING "CLOSE_CONNECTION=DEFER"
+    MAXSCALEDENOM _maxscale
+    MINSCALEDENOM _minscale
+    CLASS
+      STYLE
+         COLOR _tower_clr
+         OPACITY _tower_opacity
+      END
+#if _display_tower_outline
+      STYLE
+         OUTLINECOLOR _tower_ol_clr
+         WIDTH _tower_ol_width
+      END
+#endif
+#if _label_towers == 1
+      LABEL
+         TYPE TRUETYPE
+         FONT _tower_font
+         PARTIALS FALSE
+         MINFEATURESIZE AUTO
+         SIZE _tower_lbl_size
+         COLOR _tower_lbl_clr
+         OUTLINECOLOR _tower_lbl_ol_clr
+         OUTLINEWIDTH _tower_lbl_ol_width
+         WRAP ' '
+         MAXLENGTH 6
+         ALIGN CENTER
+      END
+#endif
+   END
+END
+#endif
