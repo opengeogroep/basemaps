@@ -9,23 +9,22 @@ LAYER
     TYPE POINT
     CONNECTIONTYPE postgis
     CONNECTION "OSM_DB_CONNECTION"
-    DATA "geometry from (select geometry,osm_id, OSM_NAME_COLUMN as name from OSM_PREFIX_towers) as foo using unique osm_id using srid=OSM_SRID"
+    DATA "geometry from (select geometry,osm_id, type, OSM_NAME_COLUMN as name from OSM_PREFIX_towers where not OSM_NAME_COLUMN is null) as foo using unique osm_id using srid=OSM_SRID"
     LABELITEM "name"
+    CLASSITEM 'type'
     PROCESSING "LABEL_NO_CLIP=ON"
     PROCESSING "CLOSE_CONNECTION=DEFER"
     MAXSCALEDENOM _maxscale
     MINSCALEDENOM _minscale
     CLASS
+      EXPRESSION 'water_tower'
       STYLE
-         COLOR _tower_clr
-         OPACITY _tower_opacity
+         COLOR 20 164 242
+         OUTLINECOLOR 0 0 0
+         SIZE _tower_symbol_size
+         SYMBOL _tower_symbol
       END
-#if _display_tower_outline
-      STYLE
-         OUTLINECOLOR _tower_ol_clr
-         WIDTH _tower_ol_width
-      END
-#endif
+
 #if _label_towers == 1
       LABEL
          TYPE TRUETYPE
@@ -42,5 +41,78 @@ LAYER
       END
 #endif
    END
+    CLASS
+      EXPRESSION 'tower'
+      STYLE
+         COLOR 250 24 81
+         OUTLINECOLOR 0 0 0
+         SIZE _tower_symbol_size
+         SYMBOL _tower_symbol
+      END
+#if _label_towers == 1
+      LABEL
+         TYPE TRUETYPE
+         FONT _tower_font
+         PARTIALS FALSE
+         MINFEATURESIZE AUTO
+         SIZE _tower_lbl_size
+         COLOR _tower_lbl_clr
+         OUTLINECOLOR _tower_lbl_ol_clr
+         OUTLINEWIDTH _tower_lbl_ol_width
+         WRAP ' '
+         MAXLENGTH 6
+         ALIGN CENTER
+      END
+#endif
+   END
+    CLASS
+      EXPRESSION 'lighthouse'
+      STYLE
+         COLOR 242 242 0
+         OUTLINECOLOR 211 98 75
+         SIZE _tower_symbol_size
+         SYMBOL _tower_symbol
+      END
+#if _label_towers == 1
+      LABEL
+         TYPE TRUETYPE
+         FONT _tower_font
+         PARTIALS FALSE
+         MINFEATURESIZE AUTO
+         SIZE _tower_lbl_size
+         COLOR _tower_lbl_clr
+         OUTLINECOLOR _tower_lbl_ol_clr
+         OUTLINEWIDTH _tower_lbl_ol_width
+         WRAP ' '
+         MAXLENGTH 6
+         ALIGN CENTER
+      END
+#endif
+   END
+    CLASS
+      EXPRESSION 'mastr' #disable mast for now
+      STYLE
+         COLOR 3 242 235
+         OUTLINECOLOR 0 0 0
+         SIZE _tower_symbol_size
+         SYMBOL _tower_symbol
+      END
+#if _label_towers == 1
+      LABEL
+         TYPE TRUETYPE
+         FONT _tower_font
+         PARTIALS FALSE
+         MINFEATURESIZE AUTO
+         SIZE _tower_lbl_size
+         COLOR _tower_lbl_clr
+         OUTLINECOLOR _tower_lbl_ol_clr
+         OUTLINEWIDTH _tower_lbl_ol_width
+         WRAP ' '
+         MAXLENGTH 6
+         ALIGN CENTER
+      END
+#endif
+   END
+
 END
 #endif

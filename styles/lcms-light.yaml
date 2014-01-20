@@ -272,7 +272,10 @@ label_other_roads:
 label_cycleway: 0
 label_track: 0
 label_pedestrian: 0
-display_towers: 0
+display_towers: 
+  0: 0
+  8: 1
+
 cycleway_width:
   0: 0
   11: 0.5

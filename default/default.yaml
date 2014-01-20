@@ -987,9 +987,9 @@ display_hamlets:
 hamlet_font: sc
 hamlet_lbl_clr:
   0: '"#444444"'
-  15: "0 0 0"
+  15: '"#000000"'
 
-hamlet_lbl_ol_clr: "255 255 255"
+hamlet_lbl_ol_clr: '"#ffffff"'
 hamlet_lbl_ol_width: 2
 display_hamlet_symbol: 0
 hamlet_lbl_size:
@@ -998,8 +998,19 @@ hamlet_lbl_size:
   15: 9
 
 hamlet_size: 5
-hamlet_ol_clr: "0 0 0"
+hamlet_ol_clr: '"#000000"'
 hamlet_clr: "200 200 200"
 
 # Towers
 display_towers: 0
+tower_symbol: '"circle"'
+tower_symbol_size: 4
+label_towers: 
+  0: 0
+  13: 1
+tower_font: sc
+tower_lbl_size: 7
+tower_lbl_clr: '"#000000"'
+tower_lbl_ol_clr: '"#ffffff"'
+tower_lbl_ol_width: 2
+  
