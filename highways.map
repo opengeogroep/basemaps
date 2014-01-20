@@ -1016,4 +1016,45 @@ LAYER
     END
 END
 #endif
+#if _display_junction == 1
+LAYER
+  GROUP "default"
+  STATUS ON
+  MINSCALEDENOM _minscale
+  MAXSCALEDENOM _maxscale
+  TYPE POINT
+  NAME layername(transport_points,_layer_suffix)
+  CONNECTIONTYPE postgis
+  CONNECTION "OSM_DB_CONNECTION"
+  DATA "geometry from (select geometry, osm_id, name, type, ref from OSM_PREFIX_transport_points) as foo using unique osm_id using srid=OSM_SRID"
+  CLASSITEM "type"
+  LABELITEM "name"
+  CLASS
+    EXPRESSION "motorway_junction"
+    LABEL
+      FONT _junction_font
+      TYPE TRUETYPE
+      ENCODING "utf-8"
+      SIZE _junction_lbl_size
+      COLOR _junction_lbl_clr
+      OUTLINECOLOR _junction_lbl_ol_clr
+      OUTLINEWIDTH _junction_lbl_ol_width
+      WRAP ' '
+      MAXLENGTH 8
+      ALIGN CENTER
+      BUFFER 4
+      PARTIALS FALSE
+      POSITION auto
+      #if _display_junction_symbol == 1
+      STYLE
+        SIZE _junction_symbol_size
+        SYMBOL _junction_symbol
+        COLOR _junction_clr
+        OUTLINECOLOR _junction_ol_clr
+      END
+      #endif
+    END
+  END
+END
+#endif
 #endif    

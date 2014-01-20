@@ -243,7 +243,7 @@ heath_clr: '"#EBD2DB"'
 forest_clr: '"#C2D1B2"'
 display_forest_lbl:
   0: 0
-  12: 1
+  11: 1
 forest_font: "sc"
 forest_lbl_size: 8
 forest_lbl_clr: '0 0 0'
@@ -1013,4 +1013,16 @@ tower_lbl_size: 7
 tower_lbl_clr: '"#000000"'
 tower_lbl_ol_clr: '"#ffffff"'
 tower_lbl_ol_width: 2
-  
+
+#Junctions
+display_junction: 0
+display_junction_symbol: 0
+junction_symbol: '"square"'
+junction_symbol_size: 4
+junction_clr: '"#000000"'
+junction_ol_clr: '"#ffffff"'
+junction_font: "sco"
+junction_lbl_size: 6
+junction_lbl_clr: '"#000000"'
+junction_lbl_ol_clr: '"#ffffff"'
+junction_lbl_ol_width: 1
