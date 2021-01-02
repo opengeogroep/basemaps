@@ -319,10 +319,10 @@ LAYER
     CLASS
 #if _display_bridges == 1
         ## includes ways under construction
-        EXPRESSION {footway00,path00}
+        EXPRESSION {footway00,path00,pier00}
 #else
         ## includes ways under construction
-        EXPRESSION {footway,path}
+        EXPRESSION {footway,path,pier}
 #endif
 #if _display_footway_outline
         STYLE
