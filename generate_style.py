@@ -270,12 +270,12 @@ style = {
    ###### highways #######
 
    'roads_data': {
-      0:'"geometry from (select osm_id,geometry,OSM_NAME_COLUMN as name,ref,type from OSM_PREFIX_roads_gen0 where type in (\'trunk\',\'motorway\') order by z_order asc) as foo using unique osm_id using srid=OSM_SRID"',
-      8:'"geometry from (select osm_id,geometry,OSM_NAME_COLUMN as name,ref,type from OSM_PREFIX_roads_gen1 where type in (\'trunk\',\'motorway\',\'primary\') order by z_order asc) as foo using unique osm_id using srid=OSM_SRID"',
-      9:'"geometry from (select osm_id,geometry,OSM_NAME_COLUMN as name,ref,type from OSM_PREFIX_roads_gen1 where type in (\'secondary\',\'trunk\',\'motorway\',\'primary\') order by z_order asc) as foo using unique osm_id using srid=OSM_SRID"',
-      10:'"geometry from (select osm_id,geometry,OSM_NAME_COLUMN as name,ref,type from OSM_PREFIX_roads_gen1 ) as foo using unique osm_id using srid=OSM_SRID"',
-      11:'"geometry from (select osm_id,geometry,OSM_NAME_COLUMN as name,ref,type from OSM_PREFIX_roads order by z_order asc) as foo using unique osm_id using srid=OSM_SRID"',
-      14:'"geometry from (select osm_id,geometry,OSM_NAME_COLUMN as name,ref,type||bridge||tunnel as type from OSM_PREFIX_roads order by z_order asc, st_length(geometry) asc) as foo using unique osm_id using srid=OSM_SRID"',
+      0:'"geometry from (select osm_id,geometry,OSM_NAME_COLUMN as name,ref,case when construction<>\'\' then 1 else 0 end as construction, type from OSM_PREFIX_roads_gen0 where type in (\'trunk\',\'motorway\') order by z_order asc) as foo using unique osm_id using srid=OSM_SRID"',
+      8:'"geometry from (select osm_id,geometry,OSM_NAME_COLUMN as name,ref,case when construction<>\'\' then 1 else 0 end as construction, type from OSM_PREFIX_roads_gen1 where type in (\'trunk\',\'motorway\',\'primary\') order by z_order asc) as foo using unique osm_id using srid=OSM_SRID"',
+      9:'"geometry from (select osm_id,geometry,OSM_NAME_COLUMN as name,ref,case when construction<>\'\' then 1 else 0 end as construction, type from OSM_PREFIX_roads_gen1 where type in (\'secondary\',\'trunk\',\'motorway\',\'primary\') order by z_order asc) as foo using unique osm_id using srid=OSM_SRID"',
+      10:'"geometry from (select osm_id,geometry,OSM_NAME_COLUMN as name,ref,case when construction<>\'\' then 1 else 0 end as construction, type from OSM_PREFIX_roads_gen1 ) as foo using unique osm_id using srid=OSM_SRID"',
+      11:'"geometry from (select osm_id,geometry,OSM_NAME_COLUMN as name,ref,case when construction<>\'\' then 1 else 0 end as construction,case when construction<>\'\' then construction else type end as type from OSM_PREFIX_roads order by z_order asc) as foo using unique osm_id using srid=OSM_SRID"',
+      14:'"geometry from (select osm_id,geometry,OSM_NAME_COLUMN as name,ref,case when construction<>\'\' then 1 else 0 end as construction,case when construction<>\'\' then construction else type end||bridge||tunnel as type from OSM_PREFIX_roads order by z_order asc, st_length(geometry) asc) as foo using unique osm_id using srid=OSM_SRID"',
    },
 
    'tunnel_opacity': 40,
@@ -517,6 +517,16 @@ style = {
       17:5,
       18:6,
    },
+   'display_other_roads_construction': {
+      0:0,
+      15:1,
+   },
+   'other_construction_pattern': {
+      0: '2 2',
+      16: '3 3',
+      17: '5 5'
+   },
+   'other_construction_color': '"#b5b5b5"',
    'label_other_roads': {
       0:0,
       15:1
@@ -1324,8 +1334,8 @@ namedstyles = {
          8: '"way from (select osm_id,way,OSM_NAME_COLUMN as name,ref,highway as type, 0 as tunnel, 0 as bridge from OSM_PREFIX_line where highway in (\'motorway\',\'trunk\',\'primary\') order by z_order asc, st_length(way) asc) as foo using unique osm_id using srid=OSM_SRID"',
          9: '"way from (select osm_id,way,OSM_NAME_COLUMN as name,ref,highway as type, 0 as tunnel, 0 as bridge from OSM_PREFIX_line where highway in (\'motorway\',\'trunk\',\'primary\',\'secondary\',\'motorway_link\',\'trunk_link\',\'primary_link\')order by z_order asc, st_length(way) asc) as foo using unique osm_id using srid=OSM_SRID"',
          10:'"way from (select osm_id,way,OSM_NAME_COLUMN as name,ref,highway as type, 0 as tunnel, 0 as bridge from OSM_PREFIX_line where highway in (\'motorway\',\'trunk\',\'primary\',\'secondary\',\'tertiary\',\'motorway_link\',\'trunk_link\',\'primary_link\',\'secondary_link\',\'tertiary_link\') order by z_order asc, st_length(way) asc) as foo using unique osm_id using srid=OSM_SRID"',
-         11:'"way from (select osm_id,way,OSM_NAME_COLUMN as name,ref,highway as type, 0 as tunnel, 0 as bridge from OSM_PREFIX_line where highway is not null order by z_order asc, st_length(way) asc) as foo using unique osm_id using srid=OSM_SRID"',
-         14:'"way from (select osm_id,way,OSM_NAME_COLUMN as name,ref,highway||(case when bridge=\'yes\' then 1 else 0 end)||(case when tunnel=\'yes\' then 1 else 0 end) as type from OSM_PREFIX_line where highway is not null order by z_order asc, st_length(way) asc) as foo using unique osm_id using srid=OSM_SRID"',
+         11:'"way from (select osm_id,way,OSM_NAME_COLUMN as name,ref,case when construction<>\'\' then 1 else 0 end as construction,case when construction<>\'\' then construction else highway end as type, 0 as tunnel, 0 as bridge from OSM_PREFIX_line where highway is not null order by z_order asc, st_length(way) asc) as foo using unique osm_id using srid=OSM_SRID"',
+         14:'"way from (select osm_id,way,OSM_NAME_COLUMN as name,ref,case when construction<>\'\' then 1 else 0 end as construction,case when construction<>\'\' then construction else highway end ||(case when bridge=\'yes\' then 1 else 0 end)||(case when tunnel=\'yes\' then 1 else 0 end) as type from OSM_PREFIX_line where highway is not null order by z_order asc, st_length(way) asc) as foo using unique osm_id using srid=OSM_SRID"',
       },
 
    },

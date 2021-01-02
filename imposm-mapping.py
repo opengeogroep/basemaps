@@ -140,6 +140,7 @@ roads = Highway(
             'living_street',
             'unclassified',
             'residential',
+            'construction',
         ),
     }
 )
