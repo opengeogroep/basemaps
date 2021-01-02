@@ -699,12 +699,12 @@ LAYER
 #endif
 
 
-########################
-## pedestrian bridges ##
-########################
+####################################
+## pedestrian and cycling bridges ##
+####################################
 #if _display_pedestrian == 1
     CLASS
-        EXPRESSION ([construction] = 0 and "[type]" in "pedestrian10,footway10,path10")
+        EXPRESSION ([construction] = 0 and "[type]" in "pedestrian10,footway10,path10,cycleway10")
 #if _display_pedestrian_outline
         STYLE
         END
@@ -827,12 +827,12 @@ LAYER
     END
 #endif
 
-########################
-## pedestrian tunnels ##
-########################
+####################################
+## pedestrian and cycling tunnels ##
+####################################
 #if _display_pedestrian == 1
     CLASS
-        EXPRESSION ([construction] = 0 and "[type]" in "pedestrian01,footway01,path01")
+        EXPRESSION ([construction] = 0 and "[type]" in "pedestrian01,footway01,path01,cycleway01")
         STYLE
             WIDTH _pedestrian_width 
             COLOR _pedestrian_clr
