@@ -304,6 +304,7 @@ LAYER
 #endif
         STYLE
             PATTERN _cycleway_pattern END
+            LINECAP butt
             WIDTH _cycleway_width
             COLOR _cycleway_clr
         END
