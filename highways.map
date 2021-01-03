@@ -72,6 +72,7 @@ LAYER
            WIDTH _other_width
            OUTLINEWIDTH _other_ol_width
            OUTLINECOLOR _other_ol_clr
+           LINECAP butt
         END
 #endif
         STYLE
