@@ -292,13 +292,6 @@ LAYER
         ## includes ways under construction
         EXPRESSION "cycleway"
 #endif
-#if _display_other_outline
-        STYLE
-           WIDTH _cycleway_width
-           OUTLINEWIDTH _cycleway_ol_width
-           OUTLINECOLOR _cycleway_ol_clr
-        END
-#endif
         STYLE
             PATTERN _cycleway_pattern END
             LINECAP butt

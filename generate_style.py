@@ -623,8 +623,6 @@ style = {
       15:2,
    },
    'cycleway_pattern': '4 2',
-   'cycleway_ol_width': 1,
-   'cycleway_ol_clr': "0 0 0",
    'display_footways': {
       0:0,
       15:1
@@ -1184,7 +1182,8 @@ namedstyles = {
       'tertiary_ol_clr': '193 181 157',
       'other_ol_clr': '193 181 157',
       'pedestrian_ol_clr': '193 181 157',
-      'display_buildings':1
+      'display_buildings':1,
+      'cycleway_clr': '"#004b00"',
    },
    'michelin':{
       'motorway_clr': '228 24 24',
@@ -1250,7 +1249,8 @@ namedstyles = {
       'tertiary_ol_clr': '0 0 0',
       'other_ol_clr': '0 0 0',
       'pedestrian_ol_clr': '0 0 0',
-      'footway_clr': '"#7f7f7f"'
+      'footway_clr': '"#7f7f7f"',
+      'cycleway_clr': '"#7f7f7f"',
    },
    'bing':{
       'motorway_clr': '"#BAC3A8"',
@@ -1292,7 +1292,8 @@ namedstyles = {
       'tertiary_ol_clr': '"#b7ac9a"',
       'other_ol_clr': '"#b7ac9a"',
       'pedestrian_ol_clr': '193 181 157',
-      'footway_clr': '"#7f7f7f"'
+      'footway_clr': '"#7f7f7f"',
+      'cycleway_clr': '"#7f7f7f"',
    },
    'osm2pgsql': {
       'waterarea_data': {
@@ -1361,7 +1362,6 @@ namedstyles = {
         'border_2_inner_clr': "0 0 0",
         'pedestrian_clr': "0 0 0",
         'taxiway_clr': "0 0 0",
-        'cycleway_ol_clr': "0 0 0",
         'footway_ol_clr': "0 0 0",
         'canal_clr': "0 0 0",
         'stream_clr': "0 0 0",
