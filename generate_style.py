@@ -519,14 +519,14 @@ style = {
    },
    'display_other_roads_construction': {
       0:0,
-      15:1,
+      13:1,
    },
    'other_construction_pattern': {
-      0: '2 2',
+      0: '1 1',
+      15: '2 2',
       16: '3 3',
       17: '5 5'
    },
-   'other_construction_color': '"#b5b5b5"',
    'label_other_roads': {
       0:0,
       15:1

@@ -75,14 +75,10 @@ LAYER
         END
 #endif
         STYLE
-            WIDTH _other_width
-            COLOR _other_clr
-        END
-        STYLE
             PATTERN _other_construction_pattern END
             LINECAP butt
             WIDTH _other_width
-            COLOR _other_construction_color
+            COLOR _other_clr
         END
 #if _label_other_roads == 1
         LABEL
