@@ -1227,6 +1227,7 @@ namedstyles = {
       'secondary_ol_width': 0.2,
       'tertiary_ol_width': 0.2,
       'other_ol_width': 0.2,
+      'pedestrian_ol_width': 0.2,
 
       'pedestrian_clr': '"#fafaf5"',
       'forest_clr': '188 220 180',
@@ -1248,8 +1249,9 @@ namedstyles = {
       'secondary_ol_clr': '0 0 0',
       'tertiary_ol_clr': '0 0 0',
       'other_ol_clr': '0 0 0',
-      'pedestrian_ol_clr': '0 0 0',
+      'pedestrian_ol_clr': '"#7f7f7f"',
       'footway_clr': '"#7f7f7f"',
+      'track_clr': '"#7f7f7f"',
       'cycleway_clr': '"#7f7f7f"',
    },
    'bing':{
@@ -1293,6 +1295,7 @@ namedstyles = {
       'other_ol_clr': '"#b7ac9a"',
       'pedestrian_ol_clr': '193 181 157',
       'footway_clr': '"#7f7f7f"',
+      'track_clr': '"#7f7f7f"',
       'cycleway_clr': '"#7f7f7f"',
    },
    'osm2pgsql': {
